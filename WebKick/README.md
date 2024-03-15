@@ -12,7 +12,9 @@ To use WebKick, you have a couple of options to get the script:
 
 - **Clone Repository**: Use Git to clone this repository to your local machine.
 
+```
 git clone https://github.com/Aleesssino/scripts.git
+```
 
 - **Download ZIP**: Click on the "Code" button on the repository page and select "Download ZIP". Extract the downloaded ZIP file to your desired location.
 
@@ -22,15 +24,21 @@ Once you have downloaded the WebKick script, follow these steps to run it from a
 
 1. **Make it Executable**: Open a terminal and navigate to the directory where the script is saved. Run the following command to make it executable:
 
+```
 chmod +x webkick.sh
+```
 
 2. **Move to PATH Directory**: Move the script to a directory that is included in your system's PATH environment variable. For example:
 
+```
 sudo mv webkick.sh /usr/local/bin/webkick
+```
 
 3. **Run the Script**: Now, you can run the script from anywhere by typing `webkick` in the terminal.
 
+```
 webkick
+```
 
 ### Initial Setup
 
