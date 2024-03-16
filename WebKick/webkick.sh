@@ -52,7 +52,11 @@ echo "<!DOCTYPE html>
 echo "index.html created."
 
 # Create styles.css with initial styles
-echo "body {
+echo "* {
+  box-sizing: border-box;
+}
+
+body {
     background-color: black;
     color: white;
 }
