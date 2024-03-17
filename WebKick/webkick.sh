@@ -86,5 +86,5 @@ echo "Initial setup completed."
 
 # Start live-server
 echo "Starting live-server..."
-live-server --port=8080 &>/dev/null &
+live-server --port=8080 &
 echo "live-server started. Visit http://localhost:8080"
