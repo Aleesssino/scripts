@@ -17,10 +17,10 @@ This Bash script automates the process of creating a skeleton for a C program al
 4. **Move to `/usr/local/bin`:** Execute the following command to make the script accessible from anywhere by moving it to `/usr/local/bin`:
 
    ```bash
-   sudo mv see.sh /usr/local/bin
+   sudo mv see.sh /usr/local/bin/see
    ```
 
-5. **Run the Script:** Now, you can run the script from anywhere by simply typing `see.sh` in your terminal.
+5. **Run the Script:** Now, you can run the script from anywhere by simply typing `see` in your terminal.
 
 6. **Follow the Prompts:** The script will prompt you to enter the name of your C program. Enter the desired name and press Enter.
 
