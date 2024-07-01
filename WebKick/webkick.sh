@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Prompts with [Y/n] mean that 'Yes' is the default option, and you can just press Enter to agree.
+
 # Function to check if live-server is installed
 checkLiveServer() {
 	npm list -g live-server &>/dev/null
@@ -24,8 +26,9 @@ installNodemon() {
 
 # Function to prompt user to install live-server
 promptInstallLiveServer() {
-	read -p "live-server is not installed. Do you want to install it now? (y/n): " installChoice
-	if [ "$installChoice" == "y" ]; then
+	read -p "live-server is not installed. Do you want to install it now? [Y/n]: " installChoice
+	installChoice=${installChoice:-Y}
+	if [[ "$installChoice" =~ ^[Yy]$ ]]; then
 		installLiveServer
 		echo "live-server installed."
 	else
@@ -36,8 +39,9 @@ promptInstallLiveServer() {
 
 # Function to prompt user to install nodemon
 promptInstallNodemon() {
-	read -p "nodemon is not installed. Do you want to install it now? (y/n): " installChoice
-	if [ "$installChoice" == "y" ]; then
+	read -p "nodemon is not installed. Do you want to install it now? [Y/n]: " installChoice
+	installChoice=${installChoice:-Y}
+	if [[ "$installChoice" =~ ^[Yy]$ ]]; then
 		installNodemon
 		echo "nodemon installed."
 	else
@@ -48,8 +52,9 @@ promptInstallNodemon() {
 
 # Function to prompt user to use TypeScript
 promptUseTypeScript() {
-	read -p "Do you want to use TypeScript? (y/n): " tsChoice
-	if [ "$tsChoice" == "y" ]; then
+	read -p "Do you want to use TypeScript? [Y/n]: " tsChoice
+	tsChoice=${tsChoice:-Y}
+	if [[ "$tsChoice" =~ ^[Yy]$ ]]; then
 		setupTypeScript
 		echo "TypeScript setup completed."
 	else
