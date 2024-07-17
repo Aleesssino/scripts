@@ -1,93 +1,36 @@
 #!/bin/bash
 
-# Prompts with [Y/n] mean that 'Yes' is the default option, and you can just press Enter to agree.
-
 # Function to check if live-server is installed
-checkLiveServer() {
-	npm list -g live-server &>/dev/null
-	return $?
+check_live_server() {
+  npm list -g live-server &>/dev/null
+  return $?
 }
 
 # Function to install live-server
-installLiveServer() {
-	npm install -g live-server
-}
-
-# Function to check if nodemon is installed
-checkNodemon() {
-	npm list -g nodemon &>/dev/null
-	return $?
-}
-
-# Function to install nodemon
-installNodemon() {
-	npm install -g nodemon
+install_live_server() {
+  npm install -g live-server
 }
 
 # Function to prompt user to install live-server
-promptInstallLiveServer() {
-	read -p "live-server is not installed. Do you want to install it now? [Y/n]: " installChoice
-	installChoice=${installChoice:-Y}
-	if [[ "$installChoice" =~ ^[Yy]$ ]]; then
-		installLiveServer
-		echo "live-server installed."
-	else
-		echo "live-server not installed. Exiting."
-		exit 1
-	fi
-}
-
-# Function to prompt user to install nodemon
-promptInstallNodemon() {
-	read -p "nodemon is not installed. Do you want to install it now? [Y/n]: " installChoice
-	installChoice=${installChoice:-Y}
-	if [[ "$installChoice" =~ ^[Yy]$ ]]; then
-		installNodemon
-		echo "nodemon installed."
-	else
-		echo "nodemon not installed. Exiting."
-		exit 1
-	fi
-}
-
-# Function to prompt user to use TypeScript
-promptUseTypeScript() {
-	read -p "Do you want to use TypeScript? [Y/n]: " tsChoice
-	tsChoice=${tsChoice:-Y}
-	if [[ "$tsChoice" =~ ^[Yy]$ ]]; then
-		setupTypeScript
-		echo "TypeScript setup completed."
-	else
-		echo "Proceeding without TypeScript."
-	fi
-}
-
-# Function to setup TypeScript
-setupTypeScript() {
-	npm install -g typescript
-	tsc --init
-	mv script.js script.ts
-	echo "document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded');
-    // Your TypeScript code here
-});" >script.ts
-	echo "script.ts created with event listener."
+prompt_install_live_server() {
+  read -p "live-server is not installed. Do you want to install it now? (y/n): " install_choice
+  if [ "$install_choice" == "y" ]; then
+    install_live_server
+    echo "live-server installed."
+  else
+    echo "live-server not installed. Exiting."
+    exit 1
+  fi
 }
 
 # Check if live-server is installed
-checkLiveServer
+check_live_server
 if [ $? -eq 1 ]; then
-	promptInstallLiveServer
-fi
-
-# Check if nodemon is installed
-checkNodemon
-if [ $? -eq 1 ]; then
-	promptInstallNodemon
+  prompt_install_live_server
 fi
 
 # Get the name of the current directory
-folderName=$(basename "$(pwd)")
+folder_name=$(basename "$(pwd)")
 
 # Create index.html with HTML skeleton
 echo "<!DOCTYPE html>
@@ -95,7 +38,7 @@ echo "<!DOCTYPE html>
 <head>
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <title>$folderName</title>
+    <title>$folder_name</title>
     <link rel=\"stylesheet\" href=\"styles.css\">
     <script src=\"script.js\" defer></script>
 </head>
@@ -139,12 +82,9 @@ echo "script.js created with event listener."
 touch README.md
 echo "README.md created."
 
-# Prompt user for TypeScript setup
-promptUseTypeScript
-
 echo "Initial setup completed."
 
-# Start live-server with nodemon
-echo "Starting live-server with nodemon..."
-nodemon --watch . --ext js,css,html --exec "live-server --port=8080"
-echo "nodemon and live-server started. Visit http://localhost:8080"
+# Start live-server
+echo "Starting live-server..."
+live-server --port=8080 &
+echo "live-server started. Visit http://localhost:8080"
