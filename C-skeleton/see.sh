@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 # Prompt for the C program name
 read -p "Enter the name of the C program: " programName
 

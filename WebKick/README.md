@@ -25,7 +25,7 @@ Once you have downloaded the WebKick script, follow these steps to run it from a
 1. **Make it Executable**: Open a terminal and navigate to the directory where the script is saved. Run the following command to make it executable:
 
 ```
-chmod +x webkick.sh
+chmod u+x webkick.sh
 ```
 
 2. **Move to PATH Directory**: Move the script to a directory that is included in your system's PATH environment variable. For example:

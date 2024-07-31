@@ -13,7 +13,7 @@ This script is for easy setup of the necessary tools for using LazyVim. It ensur
    Open your terminal and run the following command to make the script executable:
 
    ```bash
-   chmod +x install_tools.sh
+   chmod u+x install_tools.sh
    ```
 
 3. **Run the Script**

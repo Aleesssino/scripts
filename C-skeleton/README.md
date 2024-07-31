@@ -11,7 +11,7 @@ This Bash script automates the process of creating a skeleton for a C program al
 3. **Make the Script Executable:** Run the following command to make the script executable:
 
    ```bash
-   chmod +x see.sh
+   chmod u+x see.sh
    ```
 
 4. **Move to `/usr/local/bin`:** Execute the following command to make the script accessible from anywhere by moving it to `/usr/local/bin`:
