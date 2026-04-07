@@ -2,7 +2,9 @@
 # Prompt for the program name
 read -p "Enter the name of the C program: " programName
 
-[[ "$programName" == "." || " " ]] && programName=$(basename "$PWD")
+if [[ "$programName" == "." || -z "$programName" ]]; then
+  programName=$(basename "$PWD")
+fi
 
 #  Create Makefile
 echo -e "CC=gcc\nCFLAGS= -g -Wall -Wextra -std=c11 -pedantic\n\n$programName: $programName.c\n\t\$(CC) \$(CFLAGS) -o $programName $programName.c" >Makefile
